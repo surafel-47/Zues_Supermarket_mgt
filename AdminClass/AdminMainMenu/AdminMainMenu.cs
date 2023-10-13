@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using ShopMgtSys;
 using WindowsFormsApp1;
 using WindowsFormsApp1.AdminClass;
+using WindowsFormsApp1.AdminClass.View;
 
 namespace ShopMgtSys
 {
@@ -12,7 +15,8 @@ namespace ShopMgtSys
     {
         private bool mouseDown;    //Var to hold state of Mouse Pointer for Draging Panel
         private Point lastLocation; //var to Hold Last Cordainate Location of Mouse Pointer
-
+        SqlConnection sqlCon;
+        SqlCommand sqlCmd;
         public AdminMainMenu()
         {
             InitializeComponent();
@@ -139,6 +143,13 @@ namespace ShopMgtSys
             this.Close();
         }//-----------------------------------------------------------------------
 
+        private void StockAddedLogB_Click(object sender, EventArgs e)//
+        {
+            this.Hide();
+            new ViewStockUpdateLog().ShowDialog();
+            this.Close();
+        }
+
         private void AdminMainMenu_Load(object sender, EventArgs e)
         {
             timer1.Start(); //Starting timer Object on Main Form Load
@@ -154,7 +165,28 @@ namespace ShopMgtSys
 
         private void ChangeB_Click(object sender, EventArgs e)//Password Changing
         {
+            if(newPwT.Text.Equals("") || conNewPwT.Text.Equals(""))//Validating new Password
+            {
+                MessageBox.Show("Password Can't be Empty");
+            }else if(newPwT.Text.Equals(conNewPwT.Text) == false)//Validating new Password
+            {
+                MessageBox.Show("Password Doesn't Match");
+            }
+            else
+            {
+                using(StreamWriter w=new StreamWriter("admin.txt")) // changeing password
+                {
+                    w.WriteLine("admin");
+                    w.WriteLine(newPwT.Text);
+                    MessageBox.Show("Password Changed!");
+                }//-------------------------------------------------------------
 
+                //returning back to login Screen
+                this.Hide();
+                new Login().ShowDialog();
+                this.Close();
+                //--------------------------
+            }
         }//--------------------------------------------------
 
         private void AdminMainMenu_MouseDown(object sender, MouseEventArgs e)//Method to Drag drop Admin MainMenu
@@ -178,5 +210,32 @@ namespace ShopMgtSys
                     this.Update();
                 }
         }//--------------------------------------------------------------------------------------------
+        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        {
+            try
+            {
+                sqlCon = new SqlConnection("Data Source=DESKTOP-8QIRQ1E; Initial Catalog=Shop; Integrated Security=True");
+                sqlCon.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable To Make Connection \n " + e.Message + "\n\n Program Will Exit Now");
+                Application.Exit();
+            }
+        }//---------------------------------------------------------------------------------------
+        private void BackUpB_Click(object sender, EventArgs e)// backing up database
+        {
+            makeConnection();
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("Exec USP_backUpDataBase", sqlCon);
+                sqlCmd.ExecuteNonQuery();
+                MessageBox.Show("Back Successfull, file stored on C drive");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error Occured on Back-up \n" +err.Message);
+            }
+        }//-------------------------------------------------------------------
     }
 }

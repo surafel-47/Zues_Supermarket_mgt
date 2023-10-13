@@ -48,6 +48,7 @@
             this.timeL = new System.Windows.Forms.Label();
             this.closeB = new System.Windows.Forms.Button();
             this.pwChangeP = new System.Windows.Forms.Panel();
+            this.backUpB = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.newPwT = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@
             this.viewAllEmpB = new System.Windows.Forms.Button();
             this.addEmpB = new System.Windows.Forms.Button();
             this.viewLogsP = new System.Windows.Forms.Panel();
+            this.stockAddedLogB = new System.Windows.Forms.Button();
             this.transactionLogB = new System.Windows.Forms.Button();
             this.priceUpdateLogB = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -98,7 +100,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(204, 461);
+            this.panel1.Size = new System.Drawing.Size(204, 462);
             this.panel1.TabIndex = 0;
             // 
             // settingsB
@@ -210,7 +212,7 @@
             this.mainP.Dock = System.Windows.Forms.DockStyle.Top;
             this.mainP.Location = new System.Drawing.Point(204, 0);
             this.mainP.Name = "mainP";
-            this.mainP.Size = new System.Drawing.Size(613, 828);
+            this.mainP.Size = new System.Drawing.Size(629, 828);
             this.mainP.TabIndex = 2;
             // 
             // dragP
@@ -223,7 +225,7 @@
             this.dragP.Dock = System.Windows.Forms.DockStyle.Top;
             this.dragP.Location = new System.Drawing.Point(0, 0);
             this.dragP.Name = "dragP";
-            this.dragP.Size = new System.Drawing.Size(613, 59);
+            this.dragP.Size = new System.Drawing.Size(629, 59);
             this.dragP.TabIndex = 3;
             this.dragP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminMainMenu_MouseDown);
             this.dragP.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdminMainMenu_MouseMove);
@@ -308,16 +310,35 @@
             // 
             // pwChangeP
             // 
+            this.pwChangeP.Controls.Add(this.backUpB);
             this.pwChangeP.Controls.Add(this.label9);
             this.pwChangeP.Controls.Add(this.label8);
             this.pwChangeP.Controls.Add(this.newPwT);
             this.pwChangeP.Controls.Add(this.conNewPwT);
             this.pwChangeP.Controls.Add(this.changeB);
             this.pwChangeP.Controls.Add(this.label6);
-            this.pwChangeP.Location = new System.Drawing.Point(650, 456);
+            this.pwChangeP.Location = new System.Drawing.Point(631, 465);
             this.pwChangeP.Name = "pwChangeP";
             this.pwChangeP.Size = new System.Drawing.Size(601, 385);
             this.pwChangeP.TabIndex = 2;
+            // 
+            // backUpB
+            // 
+            this.backUpB.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.backUpB.BackColor = System.Drawing.Color.DimGray;
+            this.backUpB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backUpB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backUpB.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.backUpB.Image = global::WindowsFormsApp1.Properties.Resources.ViewAll;
+            this.backUpB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.backUpB.Location = new System.Drawing.Point(407, 68);
+            this.backUpB.Name = "backUpB";
+            this.backUpB.Size = new System.Drawing.Size(157, 68);
+            this.backUpB.TabIndex = 19;
+            this.backUpB.Text = "Back up database";
+            this.backUpB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.backUpB.UseVisualStyleBackColor = false;
+            this.backUpB.Click += new System.EventHandler(this.BackUpB_Click);
             // 
             // label9
             // 
@@ -347,6 +368,7 @@
             // 
             this.newPwT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(46)))));
             this.newPwT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPwT.ForeColor = System.Drawing.SystemColors.Info;
             this.newPwT.Location = new System.Drawing.Point(177, 198);
             this.newPwT.Name = "newPwT";
             this.newPwT.Size = new System.Drawing.Size(100, 26);
@@ -356,6 +378,7 @@
             // 
             this.conNewPwT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(46)))));
             this.conNewPwT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conNewPwT.ForeColor = System.Drawing.SystemColors.Info;
             this.conNewPwT.Location = new System.Drawing.Point(177, 235);
             this.conNewPwT.Name = "conNewPwT";
             this.conNewPwT.Size = new System.Drawing.Size(100, 26);
@@ -381,12 +404,12 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Bookman Old Style", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Bookman Old Style", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(31, 113);
+            this.label6.Location = new System.Drawing.Point(34, 139);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(427, 38);
+            this.label6.Size = new System.Drawing.Size(235, 21);
             this.label6.TabIndex = 19;
             this.label6.Text = "Change Login Pass Word";
             // 
@@ -469,6 +492,7 @@
             // 
             // viewLogsP
             // 
+            this.viewLogsP.Controls.Add(this.stockAddedLogB);
             this.viewLogsP.Controls.Add(this.transactionLogB);
             this.viewLogsP.Controls.Add(this.priceUpdateLogB);
             this.viewLogsP.Controls.Add(this.label1);
@@ -476,6 +500,24 @@
             this.viewLogsP.Name = "viewLogsP";
             this.viewLogsP.Size = new System.Drawing.Size(601, 385);
             this.viewLogsP.TabIndex = 1;
+            // 
+            // stockAddedLogB
+            // 
+            this.stockAddedLogB.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stockAddedLogB.BackColor = System.Drawing.Color.DimGray;
+            this.stockAddedLogB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stockAddedLogB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockAddedLogB.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.stockAddedLogB.Image = global::WindowsFormsApp1.Properties.Resources.doc2;
+            this.stockAddedLogB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.stockAddedLogB.Location = new System.Drawing.Point(198, 284);
+            this.stockAddedLogB.Name = "stockAddedLogB";
+            this.stockAddedLogB.Size = new System.Drawing.Size(214, 44);
+            this.stockAddedLogB.TabIndex = 11;
+            this.stockAddedLogB.Text = "VIEW STOCK ADDED LOG";
+            this.stockAddedLogB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.stockAddedLogB.UseVisualStyleBackColor = false;
+            this.stockAddedLogB.Click += new System.EventHandler(this.StockAddedLogB_Click);
             // 
             // transactionLogB
             // 
@@ -486,7 +528,7 @@
             this.transactionLogB.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.transactionLogB.Image = global::WindowsFormsApp1.Properties.Resources.doc2;
             this.transactionLogB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.transactionLogB.Location = new System.Drawing.Point(198, 284);
+            this.transactionLogB.Location = new System.Drawing.Point(198, 139);
             this.transactionLogB.Name = "transactionLogB";
             this.transactionLogB.Size = new System.Drawing.Size(214, 44);
             this.transactionLogB.TabIndex = 10;
@@ -521,7 +563,7 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Image = global::WindowsFormsApp1.Properties.Resources.Logs__2_;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(115, 124);
+            this.label1.Location = new System.Drawing.Point(115, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(407, 38);
             this.label1.TabIndex = 8;
@@ -537,7 +579,7 @@
             this.manageProdP.Controls.Add(this.addProdB);
             this.manageProdP.Controls.Add(this.viewAllProdB);
             this.manageProdP.Controls.Add(this.label2);
-            this.manageProdP.Location = new System.Drawing.Point(0, 65);
+            this.manageProdP.Location = new System.Drawing.Point(9, 65);
             this.manageProdP.Name = "manageProdP";
             this.manageProdP.Size = new System.Drawing.Size(607, 385);
             this.manageProdP.TabIndex = 0;
@@ -656,7 +698,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(817, 461);
+            this.ClientSize = new System.Drawing.Size(833, 462);
             this.Controls.Add(this.mainP);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -730,6 +772,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox newPwT;
         private System.Windows.Forms.Button settingsB;
+        private System.Windows.Forms.Button stockAddedLogB;
+        private System.Windows.Forms.Button backUpB;
     }
 }
 

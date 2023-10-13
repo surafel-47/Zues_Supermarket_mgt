@@ -37,17 +37,13 @@ namespace WindowsFormsApp1.AdminClass
             }
         }//------------------------------------------------------------------------------------
 
-        private void LoadProductsTable()//+++++++++++++++ Load Data onto Products Table
+        private void LoadProductsTable()//Load Data onto Products Table
         {
             makeConnection();// Making Connection
-
-            String sqlQuery; // String to Hold SQL Query;
-            sqlQuery = String.Format("select ProID, Name as 'Product Name', UPrice 'Unit Price' from Products " +
-                       "where (ProStatus = 1) AND  (Name like '%{0}%' OR ProID like '%{0}%')  ", searchT.Text);
             try
             {
-                SqlCommand sqlCmd = new SqlCommand(sqlQuery);
-                sqlCmd.Connection = sqlCon;
+                SqlCommand sqlCmd = new SqlCommand("Exec USP_ViewAllActiveProducts @searchInput",sqlCon);
+                sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 dt = new DataTable();
                 dt.Load(reader);

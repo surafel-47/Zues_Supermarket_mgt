@@ -49,8 +49,9 @@
             // 
             // searchT
             // 
+            this.searchT.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.searchT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchT.Location = new System.Drawing.Point(163, 39);
+            this.searchT.Location = new System.Drawing.Point(172, 36);
             this.searchT.Name = "searchT";
             this.searchT.Size = new System.Drawing.Size(160, 24);
             this.searchT.TabIndex = 4;

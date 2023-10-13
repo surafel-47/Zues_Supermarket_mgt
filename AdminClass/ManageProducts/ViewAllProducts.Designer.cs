@@ -28,37 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.returnB = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.searchT = new System.Windows.Forms.TextBox();
             this.ProdListTbl = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.returnB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ProdListTbl)).BeginInit();
             this.SuspendLayout();
             // 
-            // returnB
-            // 
-            this.returnB.Location = new System.Drawing.Point(14, 462);
-            this.returnB.Name = "returnB";
-            this.returnB.Size = new System.Drawing.Size(75, 23);
-            this.returnB.TabIndex = 12;
-            this.returnB.Text = "Return";
-            this.returnB.UseVisualStyleBackColor = true;
-            this.returnB.Click += new System.EventHandler(this.ReturnB_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Enter Name or ID";
-            // 
             // searchT
             // 
-            this.searchT.Location = new System.Drawing.Point(107, 24);
+            this.searchT.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.searchT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchT.ForeColor = System.Drawing.SystemColors.Window;
+            this.searchT.Location = new System.Drawing.Point(140, 25);
             this.searchT.Name = "searchT";
-            this.searchT.Size = new System.Drawing.Size(160, 20);
+            this.searchT.Size = new System.Drawing.Size(160, 24);
             this.searchT.TabIndex = 10;
             this.searchT.TextChanged += new System.EventHandler(this.SearchT_TextChanged);
             // 
@@ -82,16 +66,50 @@
             this.ProdListTbl.Size = new System.Drawing.Size(884, 306);
             this.ProdListTbl.TabIndex = 9;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(12, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 18);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Enter Name or ID";
+            // 
+            // returnB
+            // 
+            this.returnB.BackColor = System.Drawing.Color.Indigo;
+            this.returnB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.returnB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.returnB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnB.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.returnB.Image = global::WindowsFormsApp1.Properties.Resources.back;
+            this.returnB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.returnB.Location = new System.Drawing.Point(15, 435);
+            this.returnB.Name = "returnB";
+            this.returnB.Size = new System.Drawing.Size(97, 43);
+            this.returnB.TabIndex = 14;
+            this.returnB.Text = "Return";
+            this.returnB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.returnB.UseVisualStyleBackColor = false;
+            this.returnB.Click += new System.EventHandler(this.ReturnB_Click);
+            // 
             // ViewAllItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources._801643;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 509);
             this.Controls.Add(this.returnB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchT);
             this.Controls.Add(this.ProdListTbl);
+            this.DoubleBuffered = true;
             this.Name = "ViewAllItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewAllItems";
             ((System.ComponentModel.ISupportInitialize)(this.ProdListTbl)).EndInit();
             this.ResumeLayout(false);
@@ -100,10 +118,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button returnB;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchT;
         private System.Windows.Forms.DataGridView ProdListTbl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button returnB;
     }
 }

@@ -10,17 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.AdminClass
+namespace WindowsFormsApp1.AdminClass.View
 {
-    public partial class ViewAllItems : Form
+    public partial class ViewStockUpdateLog : Form
     {
         SqlConnection sqlCon;
         DataTable dt;
-        public ViewAllItems()
+        public ViewStockUpdateLog()
         {
+            makeConnection();
             InitializeComponent();
-            makeConnection();//Making Connection
-            LoadProductsTable();
+            LoadStockUpdateLogsTable();
         }
         public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
         {
@@ -34,36 +34,31 @@ namespace WindowsFormsApp1.AdminClass
                 MessageBox.Show("Unable To Make Connection \n " + e.Message + "\n\n Program Will Exit Now");
                 Application.Exit();
             }
-        }//------------------------------------------------------------------------------------
+        }//---------------------------------------------------------------------------------------
 
-        private void LoadProductsTable() //++++++++++++ Loads Products from database to DataGridViewTable 
+
+        private void LoadStockUpdateLogsTable()
         {
             makeConnection();// Making Connection
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("Exec USP_ViewAllProducts @searchInput", sqlCon);
-                sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
+                SqlCommand sqlCmd = new SqlCommand("Exec USP_ViewStockUpdateLogs", sqlCon);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 dt = new DataTable();
                 dt.Load(reader);
-                ProdListTbl.DataSource = dt;
+                stockUpdateLogTbl.DataSource = dt;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-        }//--------------------------------------------------------------------
+        }
 
-        private void SearchT_TextChanged(object sender, EventArgs e)//Searches and Loads Products
-        {
-            LoadProductsTable();
-        }//-----------------------------------------------------
-
-        private void ReturnB_Click(object sender, EventArgs e)//Return to Admin Main Menu by Closeing This Form
+        private void ReturnB_Click(object sender, EventArgs e)
         {
             this.Hide();
             new AdminMainMenu().ShowDialog();
             this.Close();
-        }//---------------------------------------------------------------------
+        }
     }
 }

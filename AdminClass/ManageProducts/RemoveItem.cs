@@ -24,7 +24,7 @@ namespace ShopMgtSys
             LoadProductsTable();
         }
 
-        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        public void makeConnection()//Method to Make Connection with DataBase
         {
             try
             {
@@ -38,17 +38,23 @@ namespace ShopMgtSys
             }
         }//------------------------------------------------------------------------------------
 
-        private void LoadProductsTable()//+++++++++++++++ Load Data onto Products Table
+        private void LoadProductsTable()// Load Data onto Products Table
          {
             makeConnection();// Making Connection
 
-            String sqlQuery; // String to Hold SQL Query;
-            sqlQuery = String.Format("select ProID, Name as 'Product Name', UPrice 'Unit Price', Catagory FROM Products " +
-                       "where (ProStatus = 1) AND  (Name like '%{0}%' OR ProID like '%{0}%')  ",searchT.Text);
             try
             {
-                SqlCommand sqlCmd = new SqlCommand(sqlQuery);
-                sqlCmd.Connection = sqlCon;
+                SqlCommand sqlCmd;
+                if (searchT.Text.Equals(""))
+                {
+                     sqlCmd = new SqlCommand("Exec USP_ViewActiveProductsForRemovingNoSearch", sqlCon);
+                }
+                else
+                {
+                    sqlCmd = new SqlCommand("Exec USP_ViewActiveProductsForRemoving @searchInput", sqlCon);
+                    sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
+                }
+             
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 dt = new DataTable();
                 dt.Load(reader);
@@ -79,7 +85,7 @@ namespace ShopMgtSys
         private void ClearB_Click(object sender, EventArgs e)//Clear all Text Fields
         {
             nameT.Text = ""; idT.Text = ""; removeB.Enabled = false;
-        }
+        }//------------------------------------------------
 
         private void RemoveB_Click(object sender, EventArgs e)// Removing Selected Employee Using Stored Proc
         {
@@ -92,7 +98,7 @@ namespace ShopMgtSys
                 sqlCmd.ExecuteNonQuery();
                 MessageBox.Show("Product Removed Succesfully");
                 nameT.Text = ""; idT.Text = ""; searchT.Text = ""; removeB.Enabled = false; // clearing Text
-                LoadProductsTable();// reloading Employees Table After Employee is Deleted
+                LoadProductsTable(); //reloading Employees Table After Employee is Deleted
             }
             catch (Exception err)
             {

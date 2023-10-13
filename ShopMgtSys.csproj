@@ -82,17 +82,23 @@
     <Compile Include="AdminClass\ManageEmployees\ViewAllEmps.Designer.cs">
       <DependentUpon>ViewAllEmps.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminClass\ManageProducts\ViewAllItems.cs">
+    <Compile Include="AdminClass\ManageProducts\ViewAllProducts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminClass\ManageProducts\ViewAllItems.Designer.cs">
-      <DependentUpon>ViewAllItems.cs</DependentUpon>
+    <Compile Include="AdminClass\ManageProducts\ViewAllProducts.Designer.cs">
+      <DependentUpon>ViewAllProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminClass\View\ViewPriceUpdateLogs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminClass\View\ViewPriceUpdateLogs.Designer.cs">
       <DependentUpon>ViewPriceUpdateLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminClass\View\ViewStockUpdateLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminClass\View\ViewStockUpdateLog.Designer.cs">
+      <DependentUpon>ViewStockUpdateLog.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminClass\View\ViewTransactionLogs.cs">
       <SubType>Form</SubType>
@@ -153,11 +159,14 @@
     <EmbeddedResource Include="AdminClass\ManageEmployees\ViewAllEmps.resx">
       <DependentUpon>ViewAllEmps.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminClass\ManageProducts\ViewAllItems.resx">
-      <DependentUpon>ViewAllItems.cs</DependentUpon>
+    <EmbeddedResource Include="AdminClass\ManageProducts\ViewAllProducts.resx">
+      <DependentUpon>ViewAllProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminClass\View\ViewPriceUpdateLogs.resx">
       <DependentUpon>ViewPriceUpdateLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminClass\View\ViewStockUpdateLog.resx">
+      <DependentUpon>ViewStockUpdateLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminClass\View\ViewTransactionLogs.resx">
       <DependentUpon>ViewTransactionLogs.cs</DependentUpon>
@@ -264,6 +273,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nathan-anderson-iYO-EGosrCo-unsplash2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vUys1x.jpg" />
+    <None Include="Resources\w000065.jpg" />
+    <None Include="Resources\ph-10555.jpg" />
+    <None Include="Resources\1 %283%29.jpg" />
+    <None Include="Resources\HD Wallpaper %28332%29.jpg" />
+    <None Include="Resources\HD-wallpaper-game-god-3d-design-dystopia-gameboy-glow-minecraft-sci-fi-video-games.jpg" />
+    <None Include="Resources\2143-couche-de-soleil-dans-la-nature-WallFizz.jpg" />
+    <Content Include="Resources\logo.png" />
+    <None Include="Resources\logo3.png" />
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

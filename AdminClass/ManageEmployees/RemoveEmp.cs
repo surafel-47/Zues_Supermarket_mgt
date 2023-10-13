@@ -22,32 +22,10 @@ namespace ShopMgtSys
         {
             InitializeComponent();
             makeConnection();// Making Connection
-            LoadEmployeesTable();
+            LoadEmployeesTable(); // loading active emps on Class startup
         }
-        private void LoadEmployeesTable()
-        {
-            makeConnection();// Making Connection
 
-            String sqlQuery; // String to Hold SQL Query;
-            sqlQuery = String.Format( "select EmpID, Fname as 'First Name', Lname 'Last Name', Salary, Positon,sex FROM staff " +
-                       "where (EmpStatus = 1) AND  (Fname like '%{0}%' OR Lname like '%{0}%' OR EmpID like '%{0}%')  ",searchT.Text);
-            try{
-                SqlCommand sqlCmd = new SqlCommand(sqlQuery);
-                sqlCmd.Connection = sqlCon;
-                SqlDataReader reader = sqlCmd.ExecuteReader();
-                dt = new DataTable();
-                dt.Load(reader);
-                EmpListTbl.DataSource = dt;
-            }catch (Exception e) {
-                MessageBox.Show(e.Message);
-            }
-        }
-        private void SearchT_TextChanged(object sender, EventArgs e)// Loads Table When Users Searches an Employee Name or ID
-        {
-            LoadEmployeesTable();
-        }//------------------------------------------------------------
-
-        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        public void makeConnection()//Method to Make Connection with DataBase
         {
             try
             {
@@ -61,6 +39,36 @@ namespace ShopMgtSys
             }
         }//------------------------------------------------------------------------------------
 
+       
+        private void LoadEmployeesTable()// Loading All Active Employees
+        {
+            makeConnection();// Making Connection
+
+            try{
+                SqlCommand sqlCmd;
+                if (searchT.Text.Equals("")){
+                    sqlCmd = new SqlCommand("Exec USP_ViewAllActiveEmployeesNoSearch", sqlCon);
+                }
+                else
+                {
+                    sqlCmd = new SqlCommand("Exec USP_ViewAllActiveEmployees @searchInput", sqlCon);
+                    sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
+                }
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                dt = new DataTable();
+                dt.Load(reader);
+                EmpListTbl.DataSource = dt;
+            }catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
+        }//-----------------------------------------------------------------------
+
+        private void SearchT_TextChanged(object sender, EventArgs e)// Loads Table When Users Searches an Employee Name or ID
+        {
+            LoadEmployeesTable();
+        }//------------------------------------------------------------
+
+   
         private void EmpListTbl_CellClick(object sender, DataGridViewCellEventArgs e)//Displays Selected Employee to Be Removed
         {
             if (e.RowIndex >= 0)

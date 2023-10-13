@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.AdminClass
+﻿namespace WindowsFormsApp1.AdminClass.View
 {
-    partial class ViewPriceUpdateLogs
+    partial class ViewStockUpdateLog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.priceUpdateLogTbl = new System.Windows.Forms.DataGridView();
+            this.stockUpdateLogTbl = new System.Windows.Forms.DataGridView();
             this.returnB = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.priceUpdateLogTbl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockUpdateLogTbl)).BeginInit();
             this.SuspendLayout();
             // 
-            // priceUpdateLogTbl
+            // stockUpdateLogTbl
             // 
-            this.priceUpdateLogTbl.AllowUserToAddRows = false;
-            this.priceUpdateLogTbl.AllowUserToDeleteRows = false;
-            this.priceUpdateLogTbl.AllowUserToOrderColumns = true;
-            this.priceUpdateLogTbl.AllowUserToResizeColumns = false;
-            this.priceUpdateLogTbl.AllowUserToResizeRows = false;
-            this.priceUpdateLogTbl.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.priceUpdateLogTbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.priceUpdateLogTbl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.priceUpdateLogTbl.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.priceUpdateLogTbl.Location = new System.Drawing.Point(28, 61);
-            this.priceUpdateLogTbl.MultiSelect = false;
-            this.priceUpdateLogTbl.Name = "priceUpdateLogTbl";
-            this.priceUpdateLogTbl.ReadOnly = true;
-            this.priceUpdateLogTbl.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.priceUpdateLogTbl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.priceUpdateLogTbl.Size = new System.Drawing.Size(884, 306);
-            this.priceUpdateLogTbl.TabIndex = 9;
+            this.stockUpdateLogTbl.AllowUserToAddRows = false;
+            this.stockUpdateLogTbl.AllowUserToDeleteRows = false;
+            this.stockUpdateLogTbl.AllowUserToOrderColumns = true;
+            this.stockUpdateLogTbl.AllowUserToResizeColumns = false;
+            this.stockUpdateLogTbl.AllowUserToResizeRows = false;
+            this.stockUpdateLogTbl.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.stockUpdateLogTbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.stockUpdateLogTbl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.stockUpdateLogTbl.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.stockUpdateLogTbl.Location = new System.Drawing.Point(27, 67);
+            this.stockUpdateLogTbl.MultiSelect = false;
+            this.stockUpdateLogTbl.Name = "stockUpdateLogTbl";
+            this.stockUpdateLogTbl.ReadOnly = true;
+            this.stockUpdateLogTbl.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.stockUpdateLogTbl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.stockUpdateLogTbl.Size = new System.Drawing.Size(884, 306);
+            this.stockUpdateLogTbl.TabIndex = 11;
             // 
             // returnB
             // 
@@ -63,7 +63,7 @@
             this.returnB.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.returnB.Image = global::WindowsFormsApp1.Properties.Resources.back;
             this.returnB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.returnB.Location = new System.Drawing.Point(28, 377);
+            this.returnB.Location = new System.Drawing.Point(27, 400);
             this.returnB.Name = "returnB";
             this.returnB.Size = new System.Drawing.Size(97, 43);
             this.returnB.TabIndex = 16;
@@ -78,34 +78,34 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Lavender;
-            this.label1.Location = new System.Drawing.Point(298, 9);
+            this.label1.Location = new System.Drawing.Point(301, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(290, 49);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Price Update Logs";
+            this.label1.Size = new System.Drawing.Size(297, 49);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Stock Update Logs";
             // 
-            // ViewPriceUpdateLogs
+            // ViewStockUpdateLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources._801643;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(936, 432);
+            this.ClientSize = new System.Drawing.Size(933, 455);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.returnB);
-            this.Controls.Add(this.priceUpdateLogTbl);
+            this.Controls.Add(this.stockUpdateLogTbl);
             this.DoubleBuffered = true;
-            this.Name = "ViewPriceUpdateLogs";
+            this.Name = "ViewStockUpdateLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ViewPriceUpdateLogs";
-            ((System.ComponentModel.ISupportInitialize)(this.priceUpdateLogTbl)).EndInit();
+            this.Text = "ViewStockUpdateLog";
+            ((System.ComponentModel.ISupportInitialize)(this.stockUpdateLogTbl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView priceUpdateLogTbl;
+        private System.Windows.Forms.DataGridView stockUpdateLogTbl;
         private System.Windows.Forms.Button returnB;
         private System.Windows.Forms.Label label1;
     }

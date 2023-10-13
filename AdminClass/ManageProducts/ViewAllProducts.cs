@@ -12,17 +12,17 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.AdminClass
 {
-    public partial class ViewAllEmps : Form
+    public partial class ViewAllItems : Form
     {
         SqlConnection sqlCon;
         DataTable dt;
-        public ViewAllEmps()
+        public ViewAllItems()
         {
             InitializeComponent();
             makeConnection();//Making Connection
-            LoadEmployeesTable();
+            LoadProductsTable();// loading all items on class start up
         }
-        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        public void makeConnection()//+Method to Make Connection with DataBase
         {
             try
             {
@@ -36,33 +36,27 @@ namespace WindowsFormsApp1.AdminClass
             }
         }//------------------------------------------------------------------------------------
 
-        private void LoadEmployeesTable() // loads all(active/inactive employees onto table
+        private void LoadProductsTable() //Loads Products from database to DataGridViewTable 
         {
             makeConnection();// Making Connection
             try
             {
-                SqlCommand sqlCmd;
-
-                if (searchT.Text.Equals("")){
-                    sqlCmd = new SqlCommand("Exec USP_ViewAllEmployeesNoSearch", sqlCon);
-                } else {
-                    sqlCmd= new SqlCommand("Exec USP_ViewAllEmployees @searchInput", sqlCon);
-                    sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
-                } 
+                SqlCommand sqlCmd = new SqlCommand("Exec USP_ViewAllProducts @searchInput", sqlCon);
+                sqlCmd.Parameters.AddWithValue("@searchInput", searchT.Text);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 dt = new DataTable();
                 dt.Load(reader);
-                EmpListTbl.DataSource = dt;
+                ProdListTbl.DataSource = dt;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-        }//---------------------------------------------------------------------------------------
+        }//--------------------------------------------------------------------
 
-        private void SearchT_TextChanged(object sender, EventArgs e)//Searches and Loads Employees
+        private void SearchT_TextChanged(object sender, EventArgs e)//Searches and Loads Products
         {
-            LoadEmployeesTable();
+            LoadProductsTable();
         }//-----------------------------------------------------
 
         private void ReturnB_Click(object sender, EventArgs e)//Return to Admin Main Menu by Closeing This Form
@@ -71,6 +65,5 @@ namespace WindowsFormsApp1.AdminClass
             new AdminMainMenu().ShowDialog();
             this.Close();
         }//---------------------------------------------------------------------
-
     }
 }

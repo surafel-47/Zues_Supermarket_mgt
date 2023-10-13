@@ -47,8 +47,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cashierLoginB = new System.Windows.Forms.Button();
             this.empIdT = new System.Windows.Forms.TextBox();
-            this.mainP = new System.Windows.Forms.Panel();
             this.exitB = new System.Windows.Forms.Button();
+            this.mainP = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.adminP.SuspendLayout();
@@ -67,7 +67,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 325);
+            this.panel1.Size = new System.Drawing.Size(186, 307);
             this.panel1.TabIndex = 0;
             // 
             // label6
@@ -213,7 +213,7 @@
             this.cashierP.Controls.Add(this.label4);
             this.cashierP.Controls.Add(this.cashierLoginB);
             this.cashierP.Controls.Add(this.empIdT);
-            this.cashierP.Location = new System.Drawing.Point(525, 27);
+            this.cashierP.Location = new System.Drawing.Point(525, 12);
             this.cashierP.Name = "cashierP";
             this.cashierP.Size = new System.Drawing.Size(312, 259);
             this.cashierP.TabIndex = 2;
@@ -250,7 +250,6 @@
             this.label4.Size = new System.Drawing.Size(67, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Cashier ";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // cashierLoginB
             // 
@@ -273,13 +272,6 @@
             this.empIdT.Size = new System.Drawing.Size(100, 20);
             this.empIdT.TabIndex = 5;
             // 
-            // mainP
-            // 
-            this.mainP.Location = new System.Drawing.Point(192, 56);
-            this.mainP.Name = "mainP";
-            this.mainP.Size = new System.Drawing.Size(312, 259);
-            this.mainP.TabIndex = 3;
-            // 
             // exitB
             // 
             this.exitB.BackColor = System.Drawing.Color.Transparent;
@@ -294,12 +286,21 @@
             this.exitB.UseVisualStyleBackColor = false;
             this.exitB.Click += new System.EventHandler(this.ExitB_Click);
             // 
+            // mainP
+            // 
+            this.mainP.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.logo2;
+            this.mainP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.mainP.Location = new System.Drawing.Point(192, 31);
+            this.mainP.Name = "mainP";
+            this.mainP.Size = new System.Drawing.Size(312, 259);
+            this.mainP.TabIndex = 3;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(514, 325);
+            this.ClientSize = new System.Drawing.Size(515, 307);
             this.Controls.Add(this.exitB);
             this.Controls.Add(this.mainP);
             this.Controls.Add(this.cashierP);

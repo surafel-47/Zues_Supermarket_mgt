@@ -21,9 +21,9 @@ namespace WindowsFormsApp1.AdminClass
         {
             InitializeComponent();
             makeConnection();// Making Connection
-            LoadProductsTable();
+            LoadProductsTable(); // loading products table on start up
         }
-        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        public void makeConnection()//Method to Make Connection with DataBase
         {
             try
             {
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.AdminClass
             }
         }//------------------------------------------------------------------------------------
 
-        private void LoadProductsTable()//+++++++++++++++ Load Data onto Products Table
+        private void LoadProductsTable()//Load Data onto Products Table
         {
             makeConnection();// Making Connection
 

@@ -30,17 +30,20 @@
         {
             this.totalT = new System.Windows.Forms.TextBox();
             this.transactionDetailsTbl = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.returnB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsTbl)).BeginInit();
             this.SuspendLayout();
             // 
             // totalT
             // 
+            this.totalT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.totalT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalT.ForeColor = System.Drawing.SystemColors.Window;
             this.totalT.Location = new System.Drawing.Point(673, 367);
             this.totalT.Name = "totalT";
             this.totalT.ReadOnly = true;
-            this.totalT.Size = new System.Drawing.Size(100, 20);
+            this.totalT.Size = new System.Drawing.Size(100, 26);
             this.totalT.TabIndex = 19;
             // 
             // transactionDetailsTbl
@@ -63,35 +66,50 @@
             this.transactionDetailsTbl.Size = new System.Drawing.Size(746, 308);
             this.transactionDetailsTbl.TabIndex = 18;
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(619, 373);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Total";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(617, 369);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Total";
             // 
             // returnB
             // 
-            this.returnB.Location = new System.Drawing.Point(298, 417);
+            this.returnB.BackColor = System.Drawing.Color.Indigo;
+            this.returnB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.returnB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.returnB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnB.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.returnB.Image = global::WindowsFormsApp1.Properties.Resources.back;
+            this.returnB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.returnB.Location = new System.Drawing.Point(27, 380);
             this.returnB.Name = "returnB";
-            this.returnB.Size = new System.Drawing.Size(89, 21);
-            this.returnB.TabIndex = 21;
+            this.returnB.Size = new System.Drawing.Size(97, 43);
+            this.returnB.TabIndex = 23;
             this.returnB.Text = "Return";
-            this.returnB.UseVisualStyleBackColor = true;
+            this.returnB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.returnB.UseVisualStyleBackColor = false;
             this.returnB.Click += new System.EventHandler(this.ReturnB_Click);
             // 
             // ViewTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources._801643;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.returnB);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.totalT);
             this.Controls.Add(this.transactionDetailsTbl);
+            this.DoubleBuffered = true;
             this.Name = "ViewTransaction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "viewTransaction";
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsTbl)).EndInit();
             this.ResumeLayout(false);
@@ -102,7 +120,7 @@
         #endregion
         private System.Windows.Forms.TextBox totalT;
         private System.Windows.Forms.DataGridView transactionDetailsTbl;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button returnB;
     }
 }

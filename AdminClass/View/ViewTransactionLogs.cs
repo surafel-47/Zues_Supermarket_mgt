@@ -36,7 +36,7 @@ namespace WindowsFormsApp1.AdminClass
             }
         }//---------------------------------------------------------------------------------------
 
-        private void LoadTrasactionLogs()
+        private void LoadTrasactionLogs()//loading all transactions made onto top table
         {
             makeConnection();// Making Connection
             try
@@ -51,16 +51,16 @@ namespace WindowsFormsApp1.AdminClass
             {
                 MessageBox.Show(e.Message);
             }
-        }
+        }//+--------------------------------------------------------------------
 
-        private void ReturnB_Click(object sender, EventArgs e)
+        private void ReturnB_Click(object sender, EventArgs e)// return to Main Admin Menu
         {
             this.Hide();
             new AdminMainMenu().ShowDialog();
             this.Close();
-        }
+        }//-----------------------------------------------------------------------------
 
-        private void TransactionsLogTbl_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void TransactionsLogTbl_CellClick(object sender, DataGridViewCellEventArgs e)// loads ticket details of a selected table
         {
             if (e.RowIndex >= 0)
             {
@@ -84,12 +84,7 @@ namespace WindowsFormsApp1.AdminClass
                 {
                     MessageBox.Show("Operation Failed \n" + err.Message);
                 }
-
-
-
-
-
             }
-        }
+        }//-------------------------------------------------------------------------
     }
 }

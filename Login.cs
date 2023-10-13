@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,37 @@ namespace WindowsFormsApp1
     {
         SqlConnection sqlCon;
         SqlCommand sqlCmd;
+        String adminName;
+        String adminPassWord;
         public Login()
         {
             InitializeComponent();
         }
+
+        public void getPassWordFromFile()
+        {
+            if (File.Exists("admin.txt")==false){
+                createDefaultAdminPassword(); //if no file found, creating default password
+            }
+            else
+            {
+                using (StreamReader r = new StreamReader("admin.txt")) //getting name and password form file
+                {
+                    adminName = r.ReadLine();
+                    adminPassWord = r.ReadLine();
+                }
+            }
+        }
+        public void createDefaultAdminPassword()//Creates a default password if admin didn't give one
+        {
+            using (StreamWriter w = new StreamWriter("admin.txt"))
+            {
+                w.WriteLine("admin");
+                w.WriteLine("admin");
+                adminPassWord = "admin";
+                adminName = "admin";
+            }
+        }//------------------------------------------------------------
 
         private void AdminLoginPanelB_Click(object sender, EventArgs e)// Displays Admin Panel
         {
@@ -37,7 +65,9 @@ namespace WindowsFormsApp1
 
         private void AdminLoginB_Click(object sender, EventArgs e)// Admin login Button Action
         {
-            if(adminNameT.Text.Equals("admin") && adminPassWordT.Text.Equals("admin"))
+            getPassWordFromFile(); //getting and setting admin password and name form file
+
+            if (adminNameT.Text.Equals(adminName) && adminPassWordT.Text.Equals(adminPassWord))
             {
                 this.Hide();
                 new AdminMainMenu().ShowDialog();
@@ -75,7 +105,7 @@ namespace WindowsFormsApp1
            
         }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        public void makeConnection()//++++++++++++++++++++++++++++++++++++++++++++Method to Make Connection with DataBase
+        public void makeConnection()//Method to Make Connection with DataBase
         {
             try
             {
@@ -93,10 +123,5 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }//-----------------------------------------------------
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

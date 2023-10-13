@@ -19,7 +19,7 @@ namespace ShopMgtSys
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddNewItem());
+            Application.Run(new AdminMainMenu());
            // Application.Run(new MakeTransaction(3));
             //Application.Run(new MakeTransaction());
         }

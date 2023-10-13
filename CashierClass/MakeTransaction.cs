@@ -28,7 +28,7 @@ namespace ShopMgtSys
             empID = eid; //Holding The EmpID of The Logged in Employee
         }
 
-        //++++++++++++++++++++++++++++++++++++ Loads List of Available Catagorys to Catagory ComboBox
+        // Loads List of Available Catagorys to Catagory ComboBox
         private void LoadIntoCatagoryComboBox()
         {
             String[] itemsCatagory = {"All", "Foods & Snacks", "Canned Goods", "Beverages and Drinks",
@@ -39,28 +39,16 @@ namespace ShopMgtSys
         }//---------------------------------------------------
 
 
-        //++++++++++++++++++++++++++++++++++++++++++++++++ Loading table to select products from
+        //Loading table to select products from
         private void LoadProductsTable()
         {
             makeConnection();// Making Connection
-
-            String sqlQuery; // String to Hold SQL Query;
-            if (catagoryCB.SelectedItem.ToString().Equals("All")) { 
-                sqlQuery = String.Format("select  products.ProID as 'Product ID', Name as 'Product Name', UPrice as 'Unit Price', Catagory, Stock  " +
-                           "from products,product_stock " +
-                           "Where (products.ProStatus = 1 AND products.proID=product_stock.ProID )" +
-                           "AND (name like '%{0}%' OR products.ProID like '%{0}%')  AND Product_Stock.stock>0", searchT.Text);
-            }else{
-                sqlQuery = String.Format("select  products.ProID as 'Product ID', Name as 'Product Name', UPrice as 'Unit Price', Catagory, Stock  " +
-                                  "from products,product_stock " +
-                                  "Where ( products.ProStatus = 1 AND products.proID=product_stock.ProID ) " +
-                                  " AND ( name like '%{0}%' OR products.ProID like '%{0}%') AND catagory='{1}' AND Product_Stock.stock>0 ", searchT.Text, catagoryCB.SelectedItem.ToString());
-            }
-
-              try{
-                  SqlCommand sqlCmd = new SqlCommand(sqlQuery);
-                  sqlCmd.Connection = sqlCon;
-                  SqlDataReader reader = sqlCmd.ExecuteReader();
+             try
+              {
+                  SqlCommand sqlCmd = new SqlCommand("Exec USP_ViewProductDetailsWithStock @searchInput,@catagory",sqlCon);
+                sqlCmd.Parameters.AddWithValue("@searchInput",searchT.Text);
+                sqlCmd.Parameters.AddWithValue("@catagory", catagoryCB.SelectedItem.ToString());
+                 SqlDataReader reader = sqlCmd.ExecuteReader();
                   dt = new DataTable();
                   dt.Load(reader);
                   productsTbl.DataSource = dt;
@@ -137,7 +125,7 @@ namespace ShopMgtSys
         {
             makeConnection();
             int ticketID=-1;
-            try //++++++++++++ In This Try Catch Block, Last Ticket Number is being retrived and Incremented by One for the Next Ticket We r Inserting 
+            try //In This Try Catch Block, Last Ticket Number is being retrived and Incremented by One for the Next Ticket We r Inserting 
             {
                 sqlCmd = new SqlCommand("Exec USP_GetNextTicketID", sqlCon);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
@@ -156,7 +144,7 @@ namespace ShopMgtSys
                 return;
             }//--------------------------------------------------------------------------------------------------------------------------
 
-            //+++++++++++++++++++++++++++++++++++++++++++++++++++++ In the For Loop Below, code  Inserting Each Product and Quantity is Transactions_details table is being done
+            //In the For Loop Below, code  Inserting Each Product and Quantity is Transactions_details table is being done
             for (int i = 0; i < selectedProdsTbl.Rows.Count; i++)
             {
                 String proID = selectedProdsTbl.Rows[i].Cells[0].Value.ToString();
@@ -193,7 +181,6 @@ namespace ShopMgtSys
             this.Hide();
             new ViewTransaction(ticketID).ShowDialog();
             selectedProdsTbl.Rows.Clear();//Clearing Prievious selected product list
-
             this.Show();
            
         }//-----------------------------------------------------------------------------
